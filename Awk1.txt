@@ -1,0 +1,171 @@
+// Sample.txt
+
+2NQ3YA1GAIIMPPDP 1994-04-26 Zona Kurtz olevia.vaught45@hotmail.com
+8HQMS8GO270TQDE3 2007-06-28 Matilde Copley janean_rodriguez19654@hotmail.com
+ZSEO1FD3JLMPPKV2 1997-06-21 Deedee Forman johnette.villegas9734@ou.com
+HEM0EVP86J4Q2JHI 1972-08-15 Myong Quigley aarondumont@kde.com
+
+64G68QN7TFS29IVQ 2000-08-31 Etsuko Alfonso randall70@simulations.com
+LFPPEVQBDQBSRDM1 1984-07-06 Katrice Fredrick paul@yahoo.com
+YDIUZ28XUNSH3PVP 2002-10-03 Hildred Toler sylvie499@inform.rr.leg.br
+YDIUZ28XUNSH3PVP 2002-10-03 Paul Philip  paulphilip@gmail.com
+
+YDIUZ28XUNSH3PVP 2002-10-03 John Paul itpaul@gmail.com
+
+
+
+// Print Specific fields
+~/EveryCheerfulPipeline$ awk '{print $2}' sample.txt
+1994-04-26
+2007-06-28
+1997-06-21
+1972-08-15
+2000-08-31
+1984-07-06
+2002-10-03
+
+
+~/EveryCheerfulPipeline$ awk '{print $3}' sample.txt
+Zona
+Matilde
+Deedee
+Myong
+Etsuko
+Katrice
+Hildred
+
+
+// Print Last Field
+~/EveryCheerfulPipeline$ awk '{print $NF}' sample.txt
+olevia.vaught45@hotmail.com
+janean_rodriguez19654@hotmail.com
+johnette.villegas9734@ou.com
+aarondumont@kde.com
+randall70@simulations.com
+mara84@yahoo.com
+sylvie499@inform.rr.leg.br
+
+
+// Print all records and all columns
+~/EveryCheerfulPipeline$ awk '{print $0}' sample.txt
+2NQ3YA1GAIIMPPDP 1994-04-26 Zona Kurtz olevia.vaught45@hotmail.com
+8HQMS8GO270TQDE3 2007-06-28 Matilde Copley janean_rodriguez19654@hotmail.com
+ZSEO1FD3JLMPPKV2 1997-06-21 Deedee Forman johnette.villegas9734@ou.com
+HEM0EVP86J4Q2JHI 1972-08-15 Myong Quigley aarondumont@kde.com
+64G68QN7TFS29IVQ 2000-08-31 Etsuko Alfonso randall70@simulations.com
+LFPPEVQBDQBSRDM1 1984-07-06 Katrice Fredrick mara84@yahoo.com
+YDIUZ28XUNSH3PVP 2002-10-03 Hildred Toler sylvie499@inform.rr.leg.br
+
+
+// search the word 'paul'  in the records and display the second column
+~/EveryCheerfulPipeline$ awk '/paul/{print $2}' sample.txt
+1984-07-06
+2002-10-03
+2002-10-03
+
+// display all records and columns and search for word 'paul'
+// awk '(condition){pattern}' <fileName>
+~/EveryCheerfulPipeline$ awk '/paul/{print $0}' sample.txt
+LFPPEVQBDQBSRDM1 1984-07-06 Katrice Fredrick paul@yahoo.com
+YDIUZ28XUNSH3PVP 2002-10-03 Paul Philip  paulphilip@gmail.com
+YDIUZ28XUNSH3PVP 2002-10-03 John Paul itpaul@gmail.com
+
+
+// Display last column and search from word 'paul'
+~/EveryCheerfulPipeline$ awk '/paul/{print $NF}' sample.txt
+paul@yahoo.com
+paulphilip@gmail.com
+itpaul@gmail.com
+
+
+// print last column and write the sr. no with the records
+~/EveryCheerfulPipeline$ awk '{print NR, $NF}' sample.txt
+1 olevia.vaught45@hotmail.com
+2 janean_rodriguez19654@hotmail.com
+3 johnette.villegas9734@ou.com
+4 aarondumont@kde.com
+5 randall70@simulations.com
+6 paul@yahoo.com
+7 sylvie499@inform.rr.leg.br
+8 paulphilip@gmail.com
+9 itpaul@gmail.com
+
+
+// write sr. no with records
+~/EveryCheerfulPipeline$ awk '{print NR, $0}' sample.txt
+1 2NQ3YA1GAIIMPPDP 1994-04-26 Zona Kurtz olevia.vaught45@hotmail.com
+2 8HQMS8GO270TQDE3 2007-06-28 Matilde Copley janean_rodriguez19654@hotmail.com
+3 ZSEO1FD3JLMPPKV2 1997-06-21 Deedee Forman johnette.villegas9734@ou.com
+4 HEM0EVP86J4Q2JHI 1972-08-15 Myong Quigley aarondumont@kde.com
+5 64G68QN7TFS29IVQ 2000-08-31 Etsuko Alfonso randall70@simulations.com
+6 LFPPEVQBDQBSRDM1 1984-07-06 Katrice Fredrick paul@yahoo.com
+7 YDIUZ28XUNSH3PVP 2002-10-03 Hildred Toler sylvie499@inform.rr.leg.br
+8 YDIUZ28XUNSH3PVP 2002-10-03 Paul Philip  paulphilip@gmail.com
+9 YDIUZ28XUNSH3PVP 2002-10-03 John Paul itpaul@gmail.com
+
+//  search the word 'paul' in records and add sr. no to the line and print the 3rd column only
+~/EveryCheerfulPipeline$ awk '/paul/{print NR, $3}' sample.txt
+6 Katrice
+8 Paul
+9 John
+
+
+// display column 3 of line no. 6
+~/EveryCheerfulPipeline$ awk 'NR==6 {print $3}' sample.txt
+Katrice
+
+~/EveryCheerfulPipeline$ awk 'NR==7 {print $3}' sample.txt
+Hildred
+
+
+// display all lines from 7 to 9 and only their 3rd column
+~/EveryCheerfulPipeline$ awk 'NR==7,NR==9 {print $3}' sample.txt
+Hildred
+Paul
+John
+
+
+// display all lines from 7 to 9 and only their 3rd column and show their sr. no
+~/EveryCheerfulPipeline$ awk 'NR==7,NR==9 {print NR,$3}' sample.txt
+7 Hildred
+8 Paul
+9 John
+
+
+// NF means 'no of fields' -- > print all the lines with no fields or empty lines
+~/EveryCheerfulPipeline$ awk 'NF==0 {print NR,$0}' sample.txt
+5 
+10
+
+
+
+~/EveryCheerfulPipeline$ awk '/Paul/ {print NR,$3}' sample.txt
+9 Paul
+11 John
+
+
+// search for word 'paul' and 'Paul' in records
+~/EveryCheerfulPipeline$ awk '/Paul|paul/ {print NR,$3}' sample.txt
+7 Katrice
+9 Paul
+11 John
+
+
+// use BEGIN{IGNORECASE=1}  for ignoring case sensitiveness
+~/EveryCheerfulPipeline$ awk 'BEGIN{IGNORECASE=1} /paul/{print $3}' sample.txt
+Katrice
+Paul
+John
+
+
+// search for word 'paul' in column 3 of all records
+~/EveryCheerfulPipeline$ awk '$3 ~ /paul/' sample.txt
+
+~/EveryCheerfulPipeline$ awk '$3 ~ /P/' sample.txt
+YDIUZ28XUNSH3PVP 2002-10-03 Paul Philip  paulphilip@gmail.com
+
+~/EveryCheerfulPipeline$ awk '$4 ~ /p/' sample.txt
+8HQMS8GO270TQDE3 2007-06-28 Matilde Copley janean_rodriguez19654@hotmail.com
+YDIUZ28XUNSH3PVP 2002-10-03 Paul Philip  paulphilip@gmail.com
+
+
