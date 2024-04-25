@@ -1,0 +1,175 @@
+// Regular Expression
+
+~/EveryCheerfulPipeline$ cat names 
+firstname
+Arya
+Aditya
+Asad
+Ankush
+Bhanudas
+Chandan
+Ravi
+Raj 
+Roshni
+Sanu
+Ankit
+Vivek
+Kisan
+
+
+
+// Start with letter 'V'
+~/EveryCheerfulPipeline$ sed -n '/^V/p' names 
+Vivek
+
+
+
+// End with letter 'a'
+~/EveryCheerfulPipeline$ sed -n '/a$/p' names 
+Arya
+Aditya
+
+
+
+// It contiains all names starting and containing 'A' and 'D'
+~/EveryCheerfulPipeline$ sed -n '/[AD]/p' names 
+Arya
+Aditya
+Asad
+Ankush
+Ankit
+
+
+
+
+// It contiains all names starting and containing 'A' and 'd'
+~/EveryCheerfulPipeline$ sed -n '/[Ad]/p' names 
+Arya
+Aditya
+Asad
+Ankush
+Bhanudas
+Chandan
+Ankit
+
+
+
+// It contiains all names starting and containing within the range 'A' and 'D'
+~/EveryCheerfulPipeline$ sed -n '/[A-D]/p' names 
+Arya
+Aditya
+Asad
+Ankush
+Bhanudas
+Chandan
+Ankit
+
+
+
+// It contiains all names starting and containing within the range 'A' and 'K'
+~/EveryCheerfulPipeline$ sed -n '/[A-K]/p' names 
+Arya
+Aditya
+Asad
+Ankush
+Bhanudas
+Chandan
+Ankit
+Kisan
+
+
+
+// use try to list all files in reverse order
+~/EveryCheerfulPipeline$ ls -ltr
+total 64
+drwxr-xr-x 1 runner runner  416 Apr 22  2022  node_modules
+-rw-r--r-- 1 runner runner 7179 Apr 22  2022  package-lock.json
+-rw-r--r-- 1 runner runner   64 Apr 22  2022  package.json
+-rw-r--r-- 1 runner runner   42 Apr 21 10:35  program.awk
+-rw-r--r-- 1 runner runner  759 Apr 21 11:26  sample.csv
+-rw-r--r-- 1 runner runner   40 Apr 21 11:55  mul_del.txt
+-rw-r--r-- 1 runner runner  760 Apr 21 12:57  sample.txt
+-rw-r--r-- 1 runner runner  158 Apr 21 13:31  replit.nix
+-rw-r--r-- 1 runner runner   60 Apr 21 13:33  file.awk
+-rwxrwxrwx 1 runner runner  469 Apr 21 13:56  awk_demo.awk
+-rw-r--r-- 1 runner runner    8 Apr 22 15:58  ex_file
+-rw-r--r-- 1 runner runner   37 Apr 22 17:33  IndianUsers
+-rw-r--r-- 1 runner runner   37 Apr 22 17:34 'IndianUsers p'
+-rw-r--r-- 1 runner runner  103 Apr 22 17:42  sample
+-rw-r--r-- 1 runner runner   25 Apr 22 17:47  externalfile
+-rw-r--r-- 1 runner runner   90 Apr 23 03:44  names
+
+
+
+// All files with extension '.txt'
+~/EveryCheerfulPipeline$ ls -ltr *.txt
+-rw-r--r-- 1 runner runner  40 Apr 21 11:55 mul_del.txt
+-rw-r--r-- 1 runner runner 760 Apr 21 12:57 sample.txt
+
+
+
+// Posix file
+~/EveryCheerfulPipeline$ touch posix
+~/EveryCheerfulPipeline$ cat posix 
+HELLO
+wORLD
+like
+sub
+12345
+8064
+ABCD1234
+Hello World
+Hello, World 
+
+
+
+// All digits within file
+!~/EveryCheerfulPipeline$ sed -n '/[[:digit:]]/p' posix
+12345
+8064
+ABCD1234
+
+
+
+// All uppercase within file
+~/EveryCheerfulPipeline$ sed -n '/[[:upper:]]/p' posix
+HELLO
+wORLD
+ABCD1234
+Hello World
+Hello, World 
+
+
+
+// All lowercase within file
+!~/EveryCheerfulPipeline$ sed -n '/[[:lower:]]/p' posix
+wORLD
+like
+sub
+Hello World
+Hello, World 
+
+
+
+// All punctations within file
+!~/EveryCheerfulPipeline$ sed -n '/[[:punct:]]/p' posix
+Hello, World !
+
+
+
+// All spaces within file
+~/EveryCheerfulPipeline$ sed -n '/[[:space:]]/p' posix
+Hello World
+Hello, World 
+
+
+
+// All alphabets within file
+!~/EveryCheerfulPipeline$ sed -n '/[[:alpha:]]/p' posix
+HELLO
+wORLD
+like
+sub
+ABCD1234
+Hello World
+Hello, World !

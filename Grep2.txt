@@ -1,0 +1,94 @@
+// list only the name of the file for the given keywords
+~/EveryCheerfulPipeline$ grep -n -i -l -e adi -e dean csv.csv names 
+csv.csv
+names
+
+~/EveryCheerfulPipeline$ grep -n -i -l -e adi -e dean names csv.csv 
+names
+csv.csv
+
+~/EveryCheerfulPipeline$ grep -n -i -l -e adi names csv.csv 
+names
+
+
+//keyword file created with keywords to search
+~/EveryCheerfulPipeline$ touch keywords
+
+// Search for all keywords in all files
+~/EveryCheerfulPipeline$ grep -f keywords csv.csv names file.awk 
+names:Arya
+names:Aditya
+names:Ravi
+
+
+// All lines which start with "104"
+~/EveryCheerfulPipeline$ grep "^104" csv.csv
+104,Myrtice,Myrtice.@yopmail.com,police officer
+
+
+
+// All lines with the last word as "worker"
+~/EveryCheerfulPipeline$ grep "worker$" csv.csv
+111,Consuela,Consuela.@yopmail.com,worker
+118,Sean,Sean.@yopmail.com,worker
+~/EveryCheerfulPipeline$ 
+
+
+// search for the keywords in all files present on the given directory
+~/EveryCheerfulPipeline$ grep -R -f keywords /home/runner/EveryCheerfulPipeline
+/home/runner/EveryCheerfulPipeline/names:Arya
+/home/runner/EveryCheerfulPipeline/names:Aditya
+/home/runner/EveryCheerfulPipeline/names:Ravi
+/home/runner/EveryCheerfulPipeline/keywords:Aditya
+/home/runner/EveryCheerfulPipeline/keywords:Alemta
+/home/runner/EveryCheerfulPipeline/keywords:Ravi
+/home/runner/EveryCheerfulPipeline/keywords:Arya
+
+~/EveryCheerfulPipeline$ grep -R -f keywords ../EveryCheerfulPipeline
+../EveryCheerfulPipeline/names:Arya
+../EveryCheerfulPipeline/names:Aditya
+../EveryCheerfulPipeline/names:Ravi
+../EveryCheerfulPipeline/keywords:Aditya
+../EveryCheerfulPipeline/keywords:Alemta
+../EveryCheerfulPipeline/keywords:Ravi
+../EveryCheerfulPipeline/keywords:Arya
+
+
+
+// Search for multiple keywords using egrep
+~/EveryCheerfulPipeline$ egrep "Ravi|Aditya|Alemta" csv.csv names 
+names:Aditya
+names:Ravi
+~/EveryCheerfulPipeline$ egrep "Ravi|Aditya|Almeta" csv.csv names 
+csv.csv:101,Almeta,Almeta.@yopmail.com,developer
+names:Aditya
+names:Ravi
+
+
+
+ ~/EveryCheerfulPipeline$  grep Almeta csv.csv 
+101,Almeta,Almeta.@yopmail.com,developer
+
+
+// Success
+// suppress the output
+~/EveryCheerfulPipeline$  grep -q  Almeta csv.csv 
+
+// Check the last commands was success(0) or failure(1)
+~/EveryCheerfulPipeline$ echo $?
+0
+
+
+// Failure
+~/EveryCheerfulPipeline$  grep -qs  almeta csv.csv 
+~/EveryCheerfulPipeline$ echo $?
+1
+
+
+
+// Search for file name in certain directory
+~/EveryCheerfulPipeline$ ls | grep names 
+names
+~/EveryCheerfulPipeline$ ls | grep cs
+csv.csv
+sample.csv

@@ -1,0 +1,304 @@
+// print line 3 only
+~/EveryCheerfulPipeline$ sed -n '3p' sample.txt
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+
+
+// print last line only
+~/EveryCheerfulPipeline$ sed -n '$p' sample.txt
+PP78QELFGQ5AQK0T,2005-08-28,Carola,Lucero,monroe7003@fear.wada.nagano.jp,11000
+
+
+// print from line 1 to 4
+~/EveryCheerfulPipeline$sed -n '1,4p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+
+
+
+// print all lines with word 'Zona'
+~/EveryCheerfulPipeline$ sed -n '/Zona/p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+
+
+//Multiple line with -e
+~/EveryCheerfulPipeline$ sed -n -e '1p' -e '3p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+
+
+
+// Search for 'word' in each line
+~/EveryCheerfulPipeline$ sed -n -e '/Zona/p' -e '/Deedee/p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+
+
+
+// with +2p print extra 2 lines after 4
+~/EveryCheerfulPipeline$ sed -n -e '1p' -e '4,+2p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000
+
+
+
+// After 1 print all even lines apprearing
+~/EveryCheerfulPipeline$ sed -n '1~2p' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000
+
+
+
+~/EveryCheerfulPipeline$ sed -n -f ex_file sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+
+
+// cat ex_file
+~/EveryCheerfulPipeline$ cat ex_file 
+1p
+3p
+5p
+
+
+// replace all 'India' with 'INDIA'
+~/EveryCheerfulPipeline$ sed 's/India/INDIA/g' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+// replace all 'India' except 1st line with 'INDIA'
+~/EveryCheerfulPipeline$ sed '1! s/India/INDIA/g' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 India
+
+
+
+// change 'Belgium' of only line 3 to 'BELGIUM'
+~/EveryCheerfulPipeline$ sed '3 s/Belgium/BELGIUM/g' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 India
+2 Bont 45000 BELGIUM
+3 Loki 55000 Germany
+4 Hina 35000 India
+
+
+
+// No change in file
+~/EveryCheerfulPipeline$ cat sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 India
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 India
+
+
+
+// confirm the change with '-i'
+~/EveryCheerfulPipeline$ sed -i '1! s/India/INDIA/g' sample
+
+// changes reflected
+~/EveryCheerfulPipeline$ cat sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+// replace the word by searching the word 'Hina'
+~/EveryCheerfulPipeline$ sed '/Hina/ s/INDIA/US/g' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 US
+
+
+
+// delete 1st row
+~/EveryCheerfulPipeline$ sed '1d' sample
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+// delete 1st to 3rd row
+~/EveryCheerfulPipeline$ sed '1,3d' sample
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+// search for word 'Belgium' and delete the row
+~/EveryCheerfulPipeline$ sed '/Belgium/d' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+// There is space
+~/EveryCheerfulPipeline$ cat sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+// Remove Space
+~/EveryCheerfulPipeline$ sed '/^$/d' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+// Insert the change
+~/EveryCheerfulPipeline$ sed -i '/^$/d' sample
+
+// Space has been removed
+~/EveryCheerfulPipeline$ cat sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+// 'INDIA' user data sorted and write it to new_file IndianUsers
+~/EveryCheerfulPipeline$ sed '/INDIA/ w IndianUsers p' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+// Apppend "Hello User" after line 3
+~/EveryCheerfulPipeline$ sed '3 a Hello User' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+Hello User
+3 Loki 55000 Germany
+4 Hina 35000 INDIA~
+
+
+
+// change the line no. 3
+~/EveryCheerfulPipeline$ sed '3 c  Hello User' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+Hello User
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+// insert the line at 3
+~/EveryCheerfulPipeline$ sed '3 i  Hello User' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+Hello User
+2 Bont 45000 Belgium
+3 Loki 55000 Germany
+4 Hina 35000 INDIA
+
+
+
+~/EveryCheerfulPipeline$ cat sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany$
+4 Hina 35000 INDIA
+
+
+// see Hidden lines - special characters too
+~/EveryCheerfulPipeline$ sed  -n 'l' sample
+ID NAME SALARY COUNTRY$
+1 Poll 25000 INDIA$
+2 Bont 45000 Belgium$
+3 Loki 55000 Germany$$
+4 Hina 35000 INDIA$
+
+
+// character wrap after 20
+~/EveryCheerfulPipeline$ sed  -n 'l 20' sample
+ID NAME SALARY COUN\
+TRY$
+1 Poll 25000 INDIA$
+2 Bont 45000 Belgiu\
+m$
+3 Loki 55000 German\
+y$$
+4 Hina 35000 INDIA$
+
+
+
+~/EveryCheerfulPipeline$ touch externalfile
+~/EveryCheerfulPipeline$ vi externalfile 
+
+// Insert the content of file on 3
+~/EveryCheerfulPipeline$ sed '3 r externalfile' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+Hello from External File
+3 Loki 55000 Germany$
+4 Hina 35000 INDIA
+
+
+// search for 'INDIA' and after 1st record Stop
+~/EveryCheerfulPipeline$ sed '/INDIA/ q' sample
+ID NAME SALARY COUNTRY
+1 Poll 25000 INDIA
+
+
+// date expression
+~/EveryCheerfulPipeline$ date
+Mon 22 Apr 2024 05:51:24 PM UTC
+
+
+// insert date expression
+~/EveryCheerfulPipeline$ sed '2 e date' sample
+ID NAME SALARY COUNTRY
+Mon 22 Apr 2024 05:51:55 PM UTC
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany$
+4 Hina 35000 INDIA
+
+
+// insert pwd expression
+~/EveryCheerfulPipeline$ sed '2 e pwd' sample
+ID NAME SALARY COUNTRY
+/home/runner/EveryCheerfulPipeline
+1 Poll 25000 INDIA
+2 Bont 45000 Belgium
+3 Loki 55000 Germany$
+4 Hina 35000 INDIA
+
+
+
+

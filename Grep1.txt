@@ -1,0 +1,126 @@
+// Search for keyword "Almeta"
+~/EveryCheerfulPipeline$ grep Almeta csv.csv
+101,Almeta,Almeta.@yopmail.com,developer
+
+
+// Ignore uppercase and full keyword "alm" gives "Almeta"
+~/EveryCheerfulPipeline$ grep -i almeta csv.csv
+101,Almeta,Almeta.@yopmail.com,developer
+
+~/EveryCheerfulPipeline$ grep -i alm csv.csv
+101,Almeta,Almeta.@yopmail.com,developer
+
+
+
+// everything except that keyword
+~/EveryCheerfulPipeline$ grep -v Almeta csv.csv
+id,firstname,email,profession
+100,Olwen,Olwen.@yopmail.com,developer
+102,Jillayne,Jillayne.@yopmail.com,developer
+103,Winifred,Winifred.@yopmail.com,firefighter
+104,Myrtice,Myrtice.@yopmail.com,police officer
+105,Carree,Carree.@yopmail.com,doctor
+106,Deane,Deane.@yopmail.com,doctor
+107,Brietta,Brietta.@yopmail.com,police officer
+108,Shel,Shel.@yopmail.com,developer
+109,Rhea,Rhea.@yopmail.com,firefighter
+110,Bernie,Bernie.@yopmail.com,doctor
+111,Consuela,Consuela.@yopmail.com,worker
+112,Tami,Tami.@yopmail.com,developer
+113,Kathy,Kathy.@yopmail.com,firefighter
+114,Johna,Johna.@yopmail.com,police officer
+115,Glenda,Glenda.@yopmail.com,police officer
+116,Carolina,Carolina.@yopmail.com,developer
+117,Ileana,Ileana.@yopmail.com,firefighter
+118,Sean,Sean.@yopmail.com,worker
+119,Tori,Tori.@yopmail.com,firefighter
+
+
+~/EveryCheerfulPipeline$ grep -v -i alm csv.csv
+id,firstname,email,profession
+100,Olwen,Olwen.@yopmail.com,developer
+102,Jillayne,Jillayne.@yopmail.com,developer
+103,Winifred,Winifred.@yopmail.com,firefighter
+104,Myrtice,Myrtice.@yopmail.com,police officer
+105,Carree,Carree.@yopmail.com,doctor
+106,Deane,Deane.@yopmail.com,doctor
+107,Brietta,Brietta.@yopmail.com,police officer
+108,Shel,Shel.@yopmail.com,developer
+109,Rhea,Rhea.@yopmail.com,firefighter
+110,Bernie,Bernie.@yopmail.com,doctor
+111,Consuela,Consuela.@yopmail.com,worker
+112,Tami,Tami.@yopmail.com,developer
+113,Kathy,Kathy.@yopmail.com,firefighter
+114,Johna,Johna.@yopmail.com,police officer
+115,Glenda,Glenda.@yopmail.com,police officer
+116,Carolina,Carolina.@yopmail.com,developer
+117,Ileana,Ileana.@yopmail.com,firefighter
+118,Sean,Sean.@yopmail.com,worker
+119,Tori,Tori.@yopmail.com,firefighter
+
+
+
+// Count the occurence of word i no. of lines
+~/EveryCheerfulPipeline$ grep -c -i alm csv.csv
+1
+
+
+
+// search for exact keyword "Almeta"
+~/EveryCheerfulPipeline$ grep -w alm csv.csv
+~/EveryCheerfulPipeline$ grep -w Almeta csv.csv
+101,Almeta,Almeta.@yopmail.com,developer
+
+
+
+// Write the line number
+~/EveryCheerfulPipeline$ grep -n -i Almeta csv.csv
+3:101,Almeta,Almeta.@yopmail.com,developer
+
+
+
+// Mix with line number
+~/EveryCheerfulPipeline$ grep -n -v alm csv.csv
+1:id,firstname,email,profession
+2:100,Olwen,Olwen.@yopmail.com,developer
+3:101,Almeta,Almeta.@yopmail.com,developer          <-----
+4:102,Jillayne,Jillayne.@yopmail.com,developer
+5:103,Winifred,Winifred.@yopmail.com,firefighter
+6:104,Myrtice,Myrtice.@yopmail.com,police officer
+7:105,Carree,Carree.@yopmail.com,doctor
+8:106,Deane,Deane.@yopmail.com,doctor
+9:107,Brietta,Brietta.@yopmail.com,police officer
+10:108,Shel,Shel.@yopmail.com,developer
+11:109,Rhea,Rhea.@yopmail.com,firefighter
+12:110,Bernie,Bernie.@yopmail.com,doctor
+13:111,Consuela,Consuela.@yopmail.com,worker
+14:112,Tami,Tami.@yopmail.com,developer
+15:113,Kathy,Kathy.@yopmail.com,firefighter
+16:114,Johna,Johna.@yopmail.com,police officer
+17:115,Glenda,Glenda.@yopmail.com,police officer
+18:116,Carolina,Carolina.@yopmail.com,developer
+19:117,Ileana,Ileana.@yopmail.com,firefighter
+20:118,Sean,Sean.@yopmail.com,worker
+21:119,Tori,Tori.@yopmail.com,firefighter
+
+
+// Multiple files
+~/EveryCheerfulPipeline$ grep -n -i  alm csv.csv names
+csv.csv:3:101,Almeta,Almeta.@yopmail.com,developer
+
+
+
+// Hide file name in multiple files
+~/EveryCheerfulPipeline$ grep -n -h -i  alm csv.csv names
+3:101,Almeta,Almeta.@yopmail.com,developer
+
+
+
+// Search multiple  keywords in multiple files
+~/EveryCheerfulPipeline$ grep -n -i  -e alm -e dean csv.csv
+3:101,Almeta,Almeta.@yopmail.com,developer
+8:106,Deane,Deane.@yopmail.com,doctor
+
+~/EveryCheerfulPipeline$ grep -n -i  -e adi -e dean csv.csv names 
+csv.csv:8:106,Deane,Deane.@yopmail.com,doctor
+names:3:Aditya

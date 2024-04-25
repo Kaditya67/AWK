@@ -1,0 +1,167 @@
+// Setting delimiter --> ,
+~/EveryCheerfulPipeline$ awk -F, '{print $3}' sample.csv
+Zona
+Matilde
+Deedee
+Myong
+Etsuko
+Katrice
+Hildred
+Erik
+Yolonda
+Carola
+
+
+//  Records with last column > 60,000
+~/EveryCheerfulPipeline$ awk -F, '$NF>60000 {print $0}' sample.csv
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000
+~/EveryCheerfulPipeline$ 
+
+
+// setting two delimiters
+~/EveryCheerfulPipeline$ awk -F[,:] '{print $2}' mul_del.txt
+ example of 
+~/EveryCheerfulPipeline$ awk -F[,:] '{print $3}' mul_del.txt
+ multiple-delimeter
+~/EveryCheerfulPipeline$ awk -F[,:] '{print $1}' mul_del.txt
+THis is
+~/EveryCheerfulPipeline$ awk -F[,:] '{print $0}' mul_del.txt
+THis is, example of : multiple-delimeter
+~/EveryCheerfulPipeline$ awk -F[,:] '{print $4}' mul_del.txt
+
+
+// setting three delimiter
+~/EveryCheerfulPipeline$ awk -F[,:-] '{print $4}' mul_del.txt
+delimeter
+~/EveryCheerfulPipeline$ awk -F[,:-] '{print $3}' mul_del.txt
+ multiple
+~/EveryCheerfulPipeline$ awk -F[,:-] '{print $0}' mul_del.txt
+THis is, example of : multiple-delimeter
+
+
+// list all items with path and other details
+~/EveryCheerfulPipeline$ ls -lt
+total 32
+-rw-r--r-- 1 runner runner  143 Apr 21 11:36 replit.nix
+-rw-r--r-- 1 runner runner   40 Apr 21 11:30 mul_del.txt
+-rw-r--r-- 1 runner runner  759 Apr 21 11:26 sample.csv
+-rw-r--r-- 1 runner runner  700 Apr 21 11:24 sample.txt
+-rw-r--r-- 1 runner runner   42 Apr 21 10:35 program.awk
+-rw-r--r-- 1 runner runner   64 Apr 22  2022 package.json
+-rw-r--r-- 1 runner runner 7179 Apr 22  2022 package-lock.json
+drwxr-xr-x 1 runner runner  416 Apr 22  2022 node_modules
+
+
+// Choose all rows other than 1st and display only the last column
+~/EveryCheerfulPipeline$ ls -lt | awk 'NR>1{print $NF}' 
+replit.nix
+mul_del.txt
+sample.csv
+sample.txt
+program.awk
+package.json
+package-lock.json
+node_modules
+
+
+// list only file names
+node_modules
+~/EveryCheerfulPipeline$ ls -1
+mul_del.txt
+node_modules
+package.json
+package-lock.json
+program.awk
+replit.nix
+sample.csv
+sample.txt
+
+
+
+// replace word of a column from "Zona" to "ZONA" 
+~/EveryCheerfulPipeline$ awk -F, '{gsub("Zona","ZONA"); print $0}' sample.csv
+2NQ3YA1GAIIMPPDP,1994-04-26,ZONA,Kurtz,olevia.vaught45@hotmail.com,56000
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000
+D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000
+JMSU6NZOGZZUM12A,2018-06-11,Yolonda,Fair,santiago.oquendo1255@doing.com,56000
+PP78QELFGQ5AQK0T,2005-08-28,Carola,Lucero,monroe7003@fear.wada.nagano.jp,11000
+
+
+// display all content
+~/EveryCheerfulPipeline$ cat sample.csv 
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000
+D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000
+JMSU6NZOGZZUM12A,2018-06-11,Yolonda,Fair,santiago.oquendo1255@doing.com,56000
+PP78QELFGQ5AQK0T,2005-08-28,Carola,Lucero,monroe7003@fear.wada.nagano.jp,11000
+
+
+// print the length of records of column 5
+~/EveryCheerfulPipeline$ awk -F, '{print length($5)}' sample.csv
+27
+33
+28
+19
+25
+16
+26
+38
+30
+30
+
+
+
+// search word 'Erik' in whole file 
+~/EveryCheerfulPipeline$ awk -F, '/Erik/{print NR,$0}' sample.csv
+8 D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000
+
+
+// search word "Erik" and give it's index in a line with word 'Erik'
+~/EveryCheerfulPipeline$ awk -F, '/Erik/{print NR,index($0, "Erik")}' sample.csv
+8 29
+
+
+// covert to lowercase
+~/EveryCheerfulPipeline$ awk -F, '{print NR,tolower($4)}' sample.csv
+1 kurtz
+2 copley
+3 forman
+4 quigley
+5 alfonso
+6 fredrick
+7 toler
+8 seeley
+9 fair
+10 lucero
+
+
+// convert to uppercase
+~/EveryCheerfulPipeline$ awk -F, '{print NR,toupper($4)}' sample.csv
+1 KURTZ
+2 COPLEY
+3 FORMAN
+4 QUIGLEY
+5 ALFONSO
+6 FREDRICK
+7 TOLER
+8 SEELEY
+9 FAIR
+10 LUCERO
+
+
+
+
+// practice
+
+$ awk -F, 'BEGIN {IGNORECASE=1} /zona/{gsub("Zona","ZONA");print $0}' sample.csv 

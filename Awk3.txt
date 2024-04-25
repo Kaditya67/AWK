@@ -1,0 +1,179 @@
+// BEGIN{} --> declare and initialise variables
+// Main -- {}  --> iterates multiple time through all records in file (i.e sample.txt)
+// END{} --> It iterates only once
+~/EveryCheerfulPipeline$ awk 'BEGIN{print "Names Started------------";sum=0} {} END{print sum;print "Names Ended -------------"}' sample.txt
+Names Started------------
+0
+Names Ended -------------
+
+
+// using whitespace (spaces and tabs) as the field separator    --> wrong about '-F,'
+~/EveryCheerfulPipeline$ awk 'BEGIN{sum=0} {sum=sum+$NF} END{print "Sum of Salary : " sum}' 
+sample.txt
+Sum of Salary : 74
+
+
+// sum of salaries i.e sum of last column
+~/EveryCheerfulPipeline$ awk -F, 'BEGIN{sum=0} {sum=sum+$NF} END{print "Sum of Salary : " su
+m}' sample.txt
+Sum of Salary : 392432
+
+
+// After removing BEGIN{}, variables are still intialised by default to 0
+~/EveryCheerfulPipeline$ awk -F, '{sum=sum+$NF} END{print "Sum of Salary : " sum}' sample.tx
+t
+Sum of Salary : 392432
+ 
+
+// Calculate total no. pf employees by simply increasing the counter 
+ ~/EveryCheerfulPipeline$ awk -F, '{emp++} END{print "Total no. of Employees : " emp}' sample.txt
+Total no. of Employees : 11
+
+// Count employees, Ignoring all the lines with no data
+~/EveryCheerfulPipeline$ awk -F, '{if(NF>0) emp++} END{print "Total no. of Employees : " emp}' sample.txt
+Total no. of Employees : 10
+
+//Together
+~/EveryCheerfulPipeline$ awk -F, '{if(NF>0) emp++; sum+=$NF} END{print "Total no. of Employees : " emp; print "Their total salary : " sum}' sample.txt
+Total no. of Employees : 10
+Their total salary : 392432
+
+
+
+// Average Salary
+~/EveryCheerfulPipeline$ awk -F, '{if(NF>0) emp++; sum+=$NF} END{print "Total no. of Employees : " emp; print "Their total salary : " sum; print "Average Salary is: " sum/emp}' sample.
+txt
+Total no. of Employees : 10
+Their total salary : 392432
+Average Salary is: 39243.2
+
+
+// Count No. of line by just printing NR in END{}
+~/EveryCheerfulPipeline$ awk -F, '{} END{print NR}' sample.txt
+11
+
+
+
+// Longest length of Line
+~/EveryCheerfulPipeline$ awk -F, '{if(length($0)>len)len=length($0)} END{print "length is : " len}' sample.txt
+length is : 84
+
+// ensure
+~/EveryCheerfulPipeline$ awk -F, '{print length($0)}' sample.txt 
+72
+81
+76
+67
+74
+67
+74
+84
+0
+77
+78
+
+
+
+// creates extra column with written value as "HIGH"
+~/EveryCheerfulPipeline$ awk -F, '{if($NF>60000)$7="HIGH"} END{}' sample.txt
+~/EveryCheerfulPipeline$ awk -F, '{if($NF>60000)$7="HIGH";print $0} END{}' sample.txt
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+64G68QN7TFS29IVQ 2000-08-31 Etsuko Alfonso randall70@simulations.com 67000 HIGH
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000
+D9PAQJHQQ49O8BH2 1980-10-20 Erik Seeley keven-raines35032@tc.flt.cloud.muni.cz 78000 HIGH
+
+JMSU6NZOGZZUM12A 2018-06-11 Yolonda Fair santiago.oquendo1255@doing.com 56000 
+PP78QELFGQ5AQK0T 2005-08-28 Carola Lucero monroe7003@fear.wada.nagano.jp 11000 
+
+
+~/EveryCheerfulPipeline$ awk -F, '{if($NF>60000)$7="HIGH";else $7="LOW";print $0} END{}' sam
+ple.txt
+2NQ3YA1GAIIMPPDP 1994-04-26 Zona Kurtz olevia.vaught45@hotmail.com 56000 LOW
+8HQMS8GO270TQDE3 2007-06-28 Matilde Copley janean_rodriguez19654@hotmail.com 5432 LOW
+ZSEO1FD3JLMPPKV2 1997-06-21 Deedee Forman johnette.villegas9734@ou.com 12000 LOW
+HEM0EVP86J4Q2JHI 1972-08-15 Myong Quigley aarondumont@kde.com 45000 LOW
+64G68QN7TFS29IVQ 2000-08-31 Etsuko Alfonso randall70@simulations.com 67000 HIGH
+LFPPEVQBDQBSRDM1 1984-07-06 Katrice Fredrick mara84@yahoo.com 43000 LOW
+YDIUZ28XUNSH3PVP 2002-10-03 Hildred Toler sylvie499@inform.rr.leg.br 19000 LOW
+D9PAQJHQQ49O8BH2 1980-10-20 Erik Seeley keven-raines35032@tc.flt.cloud.muni.cz 78000 HIGH
+      LOW
+JMSU6NZOGZZUM12A 2018-06-11 Yolonda Fair santiago.oquendo1255@doing.com 56000 LOW
+PP78QELFGQ5AQK0T 2005-08-28 Carola Lucero monroe7003@fear.wada.nagano.jp 11000 LOW
+
+
+
+~/EveryCheerfulPipeline$ vi file.awk 
+vi: command not installed. Multiple versions of this command were found in Nix.
+Select one to run (or press Ctrl-C to cancel):
+vim       8.2.2567  The most popular clone of the VI editor
+/nix/store/p51drj5ad1smdlcmkyp06hb33hl3w0fh-vim-8.2.2567
+Adding vim to replit.nix
+success
+ Detected change in environment, reloading shell...
+
+NOTE for Vim editor :- esc  --> for options
+                    :-    :wq  --> for save and quit
+
+
+// file.awk     --> No semicolon(;) required
+{
+	if($NF>60000)
+		$7="HIGH" 
+	else 
+		$7="LOW"
+	print $0
+}
+
+
+// Working same
+~/EveryCheerfulPipeline$ awk -f file.awk sample.txt 
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000      LOW
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432      HIGH
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000      HIGH
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000      HIGH
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000      HIGH
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000      HIGH
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000      HIGH
+D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000      HIGH
+      LOW
+JMSU6NZOGZZUM12A,2018-06-11,Yolonda,Fair,santiago.oquendo1255@doing.com,56000      HIGH
+PP78QELFGQ5AQK0T,2005-08-28,Carola,Lucero,monroe7003@fear.wada.nagano.jp,11000      HIGH
+
+
+
+
+~/EveryCheerfulPipeline$ vi awk_demo.awk
+~/EveryCheerfulPipeline$ chmod 777 awk_demo.awk         // Give Full permissions for running
+
+~/EveryCheerfulPipeline$ ./awk_demo.awk sample.csv
+Hello World
+1
+0
+Marks in math 40
+Marks in English 50
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+11
+2NQ3YA1GAIIMPPDP,1994-04-26,Zona,Kurtz,olevia.vaught45@hotmail.com,56000
+8HQMS8GO270TQDE3,2007-06-28,Matilde,Copley,janean_rodriguez19654@hotmail.com,5432
+ZSEO1FD3JLMPPKV2,1997-06-21,Deedee,Forman,johnette.villegas9734@ou.com,12000
+HEM0EVP86J4Q2JHI,1972-08-15,Myong,Quigley,aarondumont@kde.com,45000
+64G68QN7TFS29IVQ,2000-08-31,Etsuko,Alfonso,randall70@simulations.com,67000
+LFPPEVQBDQBSRDM1,1984-07-06,Katrice,Fredrick,mara84@yahoo.com,43000
+YDIUZ28XUNSH3PVP,2002-10-03,Hildred,Toler,sylvie499@inform.rr.leg.br,19000
+D9PAQJHQQ49O8BH2,1980-10-20,Erik,Seeley,keven-raines35032@tc.flt.cloud.muni.cz,78000
+JMSU6NZOGZZUM12A,2018-06-11,Yolonda,Fair,santiago.oquendo1255@doing.com,56000
+PP78QELFGQ5AQK0T,2005-08-28,Carola,Lucero,monroe7003@fear.wada.nagano.jp,11000
+1 2
