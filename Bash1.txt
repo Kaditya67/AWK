@@ -1,0 +1,263 @@
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ echo $0
+/usr/bin/bash
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ whoami
+ojhaa
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 01-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ chmod +x 01-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ ./01-scripts.sh
+Hey Buddy!
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ cat 01-scripts.sh
+#!/bin/bash
+
+echo "Hey Buddy!"
+
+
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 01-scripts.sh
+Hey Buddy!
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ ls -ltr
+total 2108778
+-rw-r--r-- 1 ojhaa 197609        282 Mar  1 12:56  desktop.ini
+-rwxr-xr-x 1 ojhaa 197609        744 Mar  5 10:53 'Downloads - Shortcut.lnk'*
+-rw-r--r-- 1 ojhaa 197609     137520 Mar  7 22:38  EM-IV_COMPIT_IA-1_Question_bank_9d1afe214bd5d71c3942ab580f02d815.pdf
+-rw-r--r-- 1 ojhaa 197609    3136774 Mar  7 22:38 'SEM-4_IA-I&II.pdf'
+-rwxr-xr-x 1 ojhaa 197609       1410 Mar 15 20:17 'Visual Studio Code.lnk'*
+drwxr-xr-x 1 ojhaa 197609          0 Mar 17 19:00  ViralCoders/
+drwxr-xr-x 1 ojhaa 197609          0 Mar 18 18:28  c4u/
+drwxr-xr-x 1 ojhaa 197609          0 Mar 19 09:03  RecordKeeper/
+drwxr-xr-x 1 ojhaa 197609          0 Mar 19 09:18  __MACOSX/
+-rw-r--r-- 1 ojhaa 197609 1537720506 Mar 24 12:47  4_6032931030711670533.mkv
+drwxr-xr-x 1 ojhaa 197609          0 Mar 24 15:36  __pycache__/
+-rw-r--r-- 1 ojhaa 197609       1631 Mar 24 15:54  Rad.py
+-rwxr-xr-x 1 ojhaa 197609       1501 Mar 24 17:23  emu8086.lnk*
+drwxr-xr-x 1 ojhaa 197609          0 Apr  1 16:37  StockTracker/
+-rw-r--r-- 1 ojhaa 197609  617771789 Apr 13 13:14  StockTracker.zip
+-rw-r--r-- 1 ojhaa 197609      59486 Apr 13 21:29  views.py
+-rw-r--r-- 1 ojhaa 197609      21111 Apr 15 20:12  dashboard.html
+-rw-r--r-- 1 ojhaa 197609     479232 Apr 15 20:14  db.sqlite3
+drwxr-xr-x 1 ojhaa 197609          0 Apr 15 20:20  St/
+drwxr-xr-x 1 ojhaa 197609          0 Apr 20 13:02  JS/
+-rw-r--r-- 1 ojhaa 197609       6027 Apr 23 11:06  sectors.html
+drwxr-xr-x 1 ojhaa 197609          0 Apr 24 09:57 'Test MP'/
+-rwxr-xr-x 1 ojhaa 197609         33 Apr 25 17:38  01-scripts.sh*
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 02-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 01-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 02-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 02-scripts.sh
+02-scripts.sh: line 5: This: command not found
+Comments passed
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 02-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 02-scripts.sh
+Comments passed
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 03-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 03-scripts.sh
+10
+03-scripts.sh: line 8: name: command not found
+I am and my age is  20
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 03-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 03-scripts.sh
+10
+I am Aditya and my age is  20
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 03-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 03-scripts.sh
+10
+I am Aditya and my age is  20
+I can try this Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ hostname
+Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 03-scripts.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ hostname
+Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 03-scripts.sh
+10
+I am Aditya and my age is  20
+I can try this Aditya
+Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 04-constants.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 04-constants.sh
+IT's Constant
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 04-constants.sh
+IT's Constant
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 04-constants.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 04-constants.sh
+IT's Constant
+04-constants.sh: line 11: const: readonly variable
+IT's Constant
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 04-constants.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 05-array.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 05-array.sh
+Hello
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 05-array.sh
+
+[1]+  Stopped                 vi 05-array.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 05-array.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 05-array.sh
+05-array.sh: line 7: *: syntax error: operand expected (error token is "*")
+2 values from 2nd index 30.5 Hello
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 05-array.sh
+05-array.sh: line 7: *: syntax error: operand expected (error token is "*")
+2 values from 2nd index 30.5 Hello
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 05-array.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 05-array.sh
+The length of the array is 5
+2 values from 2nd index 30.5 Hello
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 05-array.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 05-array.sh
+Array is 1
+The length of the array is 5
+2 values from 2nd index 30.5 Hello
+
+
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[4]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[5]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[6]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 08-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 08-strings.sh
+Uppercase : HELLO YOU and LowerCase : hello you
+Replace You with me Hello You to Hello Me
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 08-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 08-strings.sh
+Uppercase : HELLO YOU and LowerCase : hello you
+Replace You with me Hello You to Hello Me
+Slice o You
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ cat 08-strings.sh
+#1/bin/bash
+
+myVar="Hello You"
+
+echo "Uppercase : ${myVar^^} and LowerCase : ${myVar,,}"
+echo "Replace You with me ${myVar} to ${myVar/You/Me}"
+
+echo "Slice ${myVar:4:10}"
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+Give Your Name :
+Aditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+What is Your NameAditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+What is Your Name : Aditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$

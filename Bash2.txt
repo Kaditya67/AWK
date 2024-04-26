@@ -1,0 +1,192 @@
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[4]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[5]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 07-strings.sh
+
+[6]+  Stopped                 vi 07-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 08-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 08-strings.sh
+Uppercase : HELLO YOU and LowerCase : hello you
+Replace You with me Hello You to Hello Me
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 08-strings.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 08-strings.sh
+Uppercase : HELLO YOU and LowerCase : hello you
+Replace You with me Hello You to Hello Me
+Slice o You
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ cat 08-strings.sh
+#1/bin/bash
+
+myVar="Hello You"
+
+echo "Uppercase : ${myVar^^} and LowerCase : ${myVar,,}"
+echo "Replace You with me ${myVar} to ${myVar/You/Me}"
+
+echo "Slice ${myVar:4:10}"
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+Give Your Name :
+Aditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+What is Your NameAditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 09-input.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-input.sh
+What is Your Name : Aditya
+Your name is Aditya
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 09-arith.sh
+bash: 09-arith.sh: No such file or directory
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 10-arith.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 10-arith.sh
+Addition is 10+20
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 10-arith.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 10-arith.sh
+Addition is 30
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 10-arith.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 10-arith.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 10-arith.sh
+Addition is 30
+10-arith.sh: line 12: 20-10: command not found
+Subtraction is
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 10-arith.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 10-arith.sh
+Addition is 30
+Subtraction is 10
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 11-ifelse.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 11-ifelse.sh
+Enter your marks : 45
+11-ifelse.sh: line 10: syntax error: unexpected end of file
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 11-ifelse.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 11-ifelse.sh
+Enter your marks : 45
+You are Passed
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 11-ifelse.sh
+Enter your marks : 32
+You are Fail
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 12-switch.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 12-switch.sh
+a for date
+b for list of scripts
+c for current location
+12-switch.sh: line 8: read: `Enter your choice : ': not a valid identifier
+Provide a valid input
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 12-switch.sh
+
+[7]+  Stopped                 vi 12-switch.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ vi 12-switch.sh
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 12-switch.sh
+a for date
+b for list of scripts
+c for current location
+Enter your choice : b
+ 01-scripts.sh                                                          RecordKeeper
+ 02-scripts.sh                                                         'SEM-4_IA-I&II.pdf'
+ 03-scripts.sh                                                          St
+ 04-constants.sh                                                        StockTracker
+ 05-array.sh                                                            StockTracker.zip
+ 06-keyValue.sh                                                        'Test MP'
+ 07-strings.sh                                                          ViralCoders
+ 08-strings.sh                                                         'Visual Studio Code.lnk'
+ 09-input.sh                                                            __MACOSX
+ 10-arith.sh                                                            __pycache__
+ 11-ifelse.sh                                                           c4u
+ 12-switch.sh                                                           dashboard.html
+ 4_6032931030711670533.mkv                                              db.sqlite3
+'Downloads - Shortcut.lnk'                                              desktop.ini
+ EM-IV_COMPIT_IA-1_Question_bank_9d1afe214bd5d71c3942ab580f02d815.pdf   emu8086.lnk
+ JS                                                                     sectors.html
+ Rad.py                                                                 views.py
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 12-switch.sh
+a for date
+b for list of scripts
+c for current location
+Enter your choice : a
+Thu Apr 25 19:10:10 IST 2024
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$ bash 12-switch.sh
+a for date
+b for list of scripts
+c for current location
+Enter your choice : c
+/c/Users/ojhaa/Desktop
+
+ojhaa@Aditya MINGW64 ~/Desktop
+$

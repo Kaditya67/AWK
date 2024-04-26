@@ -1,0 +1,13 @@
++ echo 'Step by step analysis'
+Step by step analysis
++ echo 'First file '
+First file 
++ echo 'Second iile '
+Second iile 
++ echo 'All arguments - '
+All arguments - 
++ echo 'No of arguments - 0'
+No of arguments - 0
++ shift
++ echo 'All arguments except 1 after 1 shift - '
+All arguments except 1 after 1 shift - 
